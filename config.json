@@ -1,0 +1,11 @@
+{
+    "tgToken": "",
+    "tgChats": [],
+    "tgApiUrl": null,
+
+    "openaiToken": "",
+    "openaiMode": null,
+
+    "newbingUserToken": null,
+    "newbingAllCookies": null
+}

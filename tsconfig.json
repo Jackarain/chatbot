@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./typings",
+            "."
+        ],
+        "noImplicitThis": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "lib": [
+            "es2022"
+        ],
+        "allowJs": true,
+        "target": "ES2022"
+    }
+}
