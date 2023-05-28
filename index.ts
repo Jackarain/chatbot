@@ -49,8 +49,8 @@ interface ChatSession {
 
 // 用于构造gpt要求的上下文结构定义.
 
-const UserRole: string = "user";
-const AssistantRole: string = "assistant";
+const UserRole: string = 'user';
+const AssistantRole: string = 'assistant';
 
 interface GptMessage {
     role: string;
@@ -71,7 +71,7 @@ class ChatBot {
     private message_thread_id: number = 0;
     private debug: number = 1;
 
-    private gpt_mode: string = "gpt-3.5-turbo"; // gpt-4, gpt-3.4-turbo ...
+    private gpt_mode: string = 'gpt-3.5-turbo'; // gpt-4, gpt-3.4-turbo ...
 
     constructor(cfg: Config) {
         this.config = cfg;
@@ -106,7 +106,7 @@ class ChatBot {
 
         console.log('messages');
         this.messages.forEach(element => {
-            console.log(element.id, "->", element.nextid, "\t:", element.content);
+            console.log(element.id, '->', element.nextid, '\t:', element.content);
         });
     }
 
@@ -240,7 +240,7 @@ class ChatBot {
             }
         }
 
-        return ["", ""];
+        return ['', ''];
     }
 
     addMessage(id: number, content?: string) {
@@ -290,8 +290,8 @@ class ChatBot {
         : [BingAIClient, string, string] {
         const text = msg?.text;
         let session: BingAIClient = null;
-        let id: string = "";
-        let jailbreakConversationId: string = "";
+        let id: string = '';
+        let jailbreakConversationId: string = '';
 
         if (msg.reply_to_message?.message_id === undefined) {
             this.printDebug();
@@ -322,7 +322,7 @@ class ChatBot {
     makeChatContext(msg: TelegramBot.Message): Array<GptMessage> {
         let start = this.findSession(msg.message_id);
         if (start === -1) {
-            console.log("Warning, not found message id:", msg.message_id);
+            console.log('Warning, not found message id:', msg.message_id);
             start = msg.message_id;
         }
 
@@ -335,7 +335,7 @@ class ChatBot {
             if (element.id === start) {
                 let gpt: GptMessage = {
                     role: role ? AssistantRole : UserRole,
-                    content: element.content === undefined ? "" : element.content
+                    content: element.content === undefined ? '' : element.content
                 };
                 role = !role;
                 messages.push(gpt);
@@ -403,17 +403,17 @@ class ChatBot {
             }
         };
 
-        if (jailbreakConversationId != "" && jailbreakConversationId != null) {
+        if (jailbreakConversationId != '' && jailbreakConversationId != null) {
             opts.jailbreakConversationId = jailbreakConversationId;
         }
 
-        if (id != "" && id != null) {
+        if (id != '' && id != null) {
             opts.parentMessageId = id;
         }
 
         console.log(opts);
 
-        let answer: string = "";
+        let answer: string = '';
         let response: any = null;
 
         for (let index = 0; index < 3; index++) {
@@ -566,7 +566,8 @@ class ChatBot {
 }
 
 
-console.log("Start chatai bot");
+console.log('Start chatai bot');
 
-const config: Config = JSON.parse(fs.readFileSync("./config.json", "utf-8"));
+const config: Config = JSON.parse(fs.readFileSync('./config.json', 'utf-8'));
 new ChatBot(config);
+
