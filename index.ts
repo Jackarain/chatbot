@@ -5,18 +5,18 @@ import * as fs from 'fs';
 
 // config.json 配置文件.
 type Config = {
-    tgToken: string;		// telegram bot 的 token.
-    tgChats: number[];		// telegram 允许对话的 chat id.
-    tgApiUrl: string;		// telegram-bot-api 的 url, 也可设置为 null 默认使用官方服务.
+    tgToken: string;        // telegram bot 的 token.
+    tgChats: number[];      // telegram 允许对话的 chat id.
+    tgApiUrl: string;       // telegram-bot-api 的 url, 也可设置为 null 默认使用官方服务.
 
-    openaiToken: string;	// openai 的 token
+    openaiToken: string;    // openai 的 token
     openaiMode: string;     // gpt-4, gpt-3.4-turbo ...
 
-    newbingUserToken: string;	// newbing user token (即 cookie 中的 _U)
-    newbingAllCookies: string;	// newbing 所有的 cookies(如果只使用上面 newbingUserToken 无法使用的话，可以考虑使用所有 cookie 字符串)
+    newbingUserToken: string;   // newbing user token (即 cookie 中的 _U)
+    newbingAllCookies: string;  // newbing 所有的 cookies(如果只使用上面 newbingUserToken 无法使用的话，可以考虑使用所有 cookie 字符串)
 
-    disable_chatgpt: boolean;      // 禁止 chatgpt
-    disable_newbing: boolean;      // 禁止 newbing
+    disable_chatgpt: boolean;   // 禁止 chatgpt
+    disable_newbing: boolean;   // 禁止 newbing
 }
 
 
@@ -368,7 +368,7 @@ class ChatBot {
     }
 
     async on_newbing(msg: TelegramBot.Message, match: RegExpExecArray | null) {
-	if (this.config.disable_newbing)
+        if (this.config.disable_newbing)
             return;
         if (!this.checkMembers(msg.chat.id)) {
             console.log('discard msg:', JSON.stringify(msg));
@@ -460,7 +460,7 @@ class ChatBot {
     }
 
     async on_chatgpt(msg: TelegramBot.Message, match: RegExpExecArray | null) {
-	if (this.config.disable_chatgpt)
+        if (this.config.disable_chatgpt)
             return;
         if (!this.checkMembers(msg.chat.id)) {
             console.log('discard msg:', JSON.stringify(msg));
