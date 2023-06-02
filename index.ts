@@ -15,8 +15,8 @@ type Config = {
     newbingUserToken: string;   // newbing user token (即 cookie 中的 _U)
     newbingAllCookies: string;  // newbing 所有的 cookies(如果只使用上面 newbingUserToken 无法使用的话，可以考虑使用所有 cookie 字符串)
 
-    disable_chatgpt: boolean;   // 禁止 chatgpt
-    disable_newbing: boolean;   // 禁止 newbing
+    disableChatgpt: boolean;   // 禁止 chatgpt
+    disableNewbing: boolean;   // 禁止 newbing
 
     chatTimeout: number;        // 对话上下文超时时间, 超出时间将删除会话.
 }
@@ -370,7 +370,7 @@ class ChatBot {
     }
 
     async on_newbing(msg: TelegramBot.Message, match: RegExpExecArray | null) {
-        if (this.config.disable_newbing)
+        if (this.config.disableNewbing)
             return;
         if (!this.checkMembers(msg.chat.id)) {
             console.log('discard msg:', JSON.stringify(msg));
@@ -462,7 +462,7 @@ class ChatBot {
     }
 
     async on_chatgpt(msg: TelegramBot.Message, match: RegExpExecArray | null) {
-        if (this.config.disable_chatgpt)
+        if (this.config.disableChatgpt)
             return;
         if (!this.checkMembers(msg.chat.id)) {
             console.log('discard msg:', JSON.stringify(msg));
