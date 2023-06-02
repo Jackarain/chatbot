@@ -17,6 +17,8 @@ type Config = {
 
     disable_chatgpt: boolean;   // 禁止 chatgpt
     disable_newbing: boolean;   // 禁止 newbing
+
+    chatTimeout: number;        // 对话上下文超时时间, 超出时间将删除会话.
 }
 
 
@@ -547,8 +549,8 @@ class ChatBot {
         });
 
         for (let i = this.sessions.length - 1; i >= 0; i--) {
-            // 删除超过3分钟的对话上下文.
-            if (this.sessions[i].tick > 600) {
+            // 删除超过默认超过3分钟的对话上下文.
+            if (this.sessions[i].tick > this.config.chatTimeout ?? 600) {
                 // 超时, 删除整个对话信息.
                 this.removeMessages(this.sessions[i].start);
                 // 删除计时对象.
