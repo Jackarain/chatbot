@@ -1,5 +1,5 @@
 # chatbot
-一个用于使用 telegram bot 对接 AI 引擎（支持 chatgpt 和 new bing）的 AI bot 聊天服务。
+一个用于使用 `telegram bot` 对接 `AI` 引擎（支持 `chatgpt` 和 `new bing`）的 `AI bot` 聊天服务。
 
 ---
 
